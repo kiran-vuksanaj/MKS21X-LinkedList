@@ -23,25 +23,37 @@ public class MyLinkedList{
     String out = "[";
     Node current = start;
     while(current != null){
-      out+=current.get()+",";
+      out+=current.getData()+",";
       current = current.next();
     }
     return out.substring(0,out.length()-1)+"]";
   }
+  public Integer get(int index){
+    Node current = start;
+    while(index > 0){
+      current = current.next();
+      index--;
+    }
+    return current.getData();
+  }
+
+
+
   private class Node{
-    private int data;
+    private Integer data;
     private Node next,prev;
     public Node(int data,Node next,Node prev){
       this.data = data;
       this.next = next;
       this.prev = prev;
     }
-    public int get(){
+    public Integer getData(){
       return data;
     }
-    public boolean set(int data){
+    public Integer setData(Integer data){
+      Integer out = data;
       this.data = data;
-      return true;
+      return out;
     }
     public Node prev(){
       return prev;
@@ -49,13 +61,11 @@ public class MyLinkedList{
     public Node next(){
       return next;
     }
-    private boolean setPrev(Node n){
+    private void setPrev(Node n){
       prev = n;
-      return true;
     }
-    private boolean setNext(Node n){
+    private void setNext(Node n){
       next = n;
-      return true;
     }
     public boolean addAfter(int val){
       next = new Node(val,next,this);
@@ -63,8 +73,8 @@ public class MyLinkedList{
       return true;
     }
     public boolean remove(){
-      next.setPrev(prev);
-      prev.setNext(next);
+      if(next != null) next.setPrev(prev);
+      if (prev != null) prev.setNext(next);
       return true;
     }
   }
