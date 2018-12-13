@@ -29,7 +29,7 @@ public class Node{
   }
   public boolean addAfter(int val){
     next = new Node(val,next,this);
-    next.next().setPrev(next);
+    if(next.next()!=null) next.next().setPrev(next);
     return true;
   }
   public boolean remove(){
