@@ -26,6 +26,6 @@ public class MyLinkedList{
       out+=current.get()+",";
       current = current.next();
     }
-    return out+"]";
+    return out.substring(0,out.length()-1)+"]";
   }
 }
