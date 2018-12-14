@@ -20,13 +20,13 @@ public class MyLinkedList{
     return true;
   }
   public String toString(){
-    String out = size()+" "+start.getData()+"[";
+    String out = "[";
     Node current = start;
     while(current != null){
       out+=current.getData()+",";
       current = current.next();
     }
-    return out.substring(0,out.length()-1)+"]"+end.getData();
+    return out.substring(0,out.length()-1)+"]";
   }
   private Node getNode(int index){
     Node current = start;
@@ -37,9 +37,11 @@ public class MyLinkedList{
     return current;
   }
   public Integer get(int index){
+    if(index < 0 || index >= size()) throw new ArrayIndexOutOfBoundsException(index);
     return getNode(index).getData();
   }
   public Integer set(int index, Integer val){
+    if(index < 0 || index >= size()) throw new ArrayIndexOutOfBoundsException(index);
     return getNode(index).setData(val);
   }
   public boolean contains(Integer value){
@@ -91,6 +93,7 @@ public class MyLinkedList{
     return true;
   }
   public void add(int index,Integer value){
+    if(index < 0 || index >= size()) throw new ArrayIndexOutOfBoundsException(index);
     if(index==0){
       start = new Node(value,start,null);
       size++;
@@ -139,8 +142,8 @@ public class MyLinkedList{
       return next;
     }
     public Node remove(){
-      if(next != null) next.setPrev(prev);
-      if (prev != null) prev.setNext(next);
+      if(next != null) {next.setPrev(prev); System.out.print(next.getData()+" ");}
+      if (prev != null) {prev.setNext(next); System.out.println(prev.getData());}
       return this;
     }
     public boolean equals(Node other){
