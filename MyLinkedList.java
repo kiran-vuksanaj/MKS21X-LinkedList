@@ -60,11 +60,12 @@ public class MyLinkedList{
     else return i;
   }
   public Integer remove(int index){
+    size--;
     if(index==0){
       start = start.next();
       return start.prev().remove().getData();
     }
-    if(index==size()-1){
+    if(index==size()){
       end = end.prev();
       return end.next().remove().getData();
     }
@@ -72,13 +73,21 @@ public class MyLinkedList{
   }
   public boolean remove(Integer value){
     Node current = start;
-    int i = 0;
-    while(!(current.getData().equals(value)) && current != end){
+    while(current != end && !(current.equals(value))){
       current = current.next();
-      i++;
     }
-    if (current==end && !(end.getData().equals(value))) return false;
-    current.remove();
+    if(!(current.equals(value))){
+      return false;
+    }else if(current==start){
+      start = current.next();
+      start.setPrev(null);
+    }else if(current==end){
+      end = current.prev();
+      end.setNext(null);
+    }else{
+      current.remove();
+    }
+    size--;
     return true;
   }
   public void add(int index,Integer value){
@@ -88,6 +97,7 @@ public class MyLinkedList{
       end = end.addAfter(value);
     }else{
       getNode(index).addAfter(value);
+      size++;
     }
   }
 
@@ -130,6 +140,12 @@ public class MyLinkedList{
       if(next != null) next.setPrev(prev);
       if (prev != null) prev.setNext(next);
       return this;
+    }
+    public boolean equals(Node other){
+      return getData().equals(other.getData());
+    }
+    public boolean equals(Integer other){
+      return getData().equals(other);
     }
   }
 }
