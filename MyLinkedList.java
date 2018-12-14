@@ -59,6 +59,17 @@ public class MyLinkedList{
     if (current==end && !(end.getData().equals(value))) return -1;
     else return i;
   }
+  public Integer remove(int index){
+    if(index==0){
+      start = start.next();
+      return start.prev().remove().getData();
+    }
+    if(index==size()-1){
+      end = end.prev();
+      return end.next().remove().getData();
+    }
+    return getNode(index).remove().getData();
+  }
 
 
 
@@ -95,10 +106,10 @@ public class MyLinkedList{
       if(next.next()!=null) next.next().setPrev(next);
       return true;
     }
-    public boolean remove(){
+    public Node remove(){
       if(next != null) next.setPrev(prev);
       if (prev != null) prev.setNext(next);
-      return true;
+      return this;
     }
   }
 }
