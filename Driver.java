@@ -20,5 +20,12 @@ public class Driver{
     System.out.println(MLL.indexOf(-3));
     System.out.println(MLL.indexOf(1));
     System.out.println(MLL.indexOf(7));
+    System.out.println("___");
+    System.out.println(MLL.remove(0));
+    System.out.println(MLL);
+    System.out.println(MLL.remove(3));
+    System.out.println(MLL);
+    System.out.println(MLL.remove(1));
+    System.out.println(MLL);
   }
 }
