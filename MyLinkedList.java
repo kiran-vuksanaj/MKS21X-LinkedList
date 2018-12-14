@@ -42,6 +42,14 @@ public class MyLinkedList{
   public void set(int index, Integer val){
     getNode(index).setData(val);
   }
+  public boolean contains(Integer value){
+    Node current = start;
+    while(!(current.getData().equals(value)) && current != end){
+      current = current.next();
+    }
+    return current==end;
+
+  }
 
 
 
