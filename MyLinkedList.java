@@ -70,6 +70,17 @@ public class MyLinkedList{
     }
     return getNode(index).remove().getData();
   }
+  public boolean remove(Integer value){
+    Node current = start;
+    int i = 0;
+    while(!(current.getData().equals(value)) && current != end){
+      current = current.next();
+      i++;
+    }
+    if (current==end && !(end.getData().equals(value))) return false;
+    current.remove();
+    return true;
+  }
   public void add(int index,Integer value){
     if(index==0){
       start = new Node(value,start,null);
