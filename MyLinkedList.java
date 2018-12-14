@@ -28,13 +28,19 @@ public class MyLinkedList{
     }
     return out.substring(0,out.length()-1)+"]";
   }
-  public Integer get(int index){
+  private Node getNode(int index){
     Node current = start;
     while(index > 0){
       current = current.next();
       index--;
     }
-    return current.getData();
+    return current;
+  }
+  public Integer get(int index){
+    return getNode(index).getData();
+  }
+  public void set(int index, Integer val){
+    getNode(index).setData(val);
   }
 
 
