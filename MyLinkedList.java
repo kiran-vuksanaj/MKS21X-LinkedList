@@ -48,7 +48,15 @@ public class MyLinkedList{
       current = current.next();
     }
     return current!=end || end.getData().equals(value);
-
+  }
+  public int indexOf(Integer value){
+    Node current = start;
+    int i = 0;
+    while(!(current.getData().equals(value)) && current != end){
+      current = current.next();
+    }
+    if (current==end && !(end.getData().equals(value))) return -1;
+    else return i;
   }
 
 
