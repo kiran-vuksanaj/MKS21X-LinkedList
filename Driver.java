@@ -5,6 +5,10 @@ public class Driver{
     MLL.add(7);
     MLL.add(19);
     MLL.add(-3);
-    System.out.println(MLL);
+    MLL.add(432);
+    System.out.println(MLL.size()+": "+MLL);
+    System.out.println(MLL.get(3));
+    System.out.println(MLL.get(4));
+    System.out.println(MLL.set(1,6));
   }
 }

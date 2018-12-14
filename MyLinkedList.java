@@ -65,7 +65,7 @@ public class MyLinkedList{
       return data;
     }
     public Integer setData(Integer data){
-      Integer out = data;
+      Integer out = this.data;
       this.data = data;
       return out;
     }
