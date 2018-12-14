@@ -47,7 +47,7 @@ public class MyLinkedList{
     while(!(current.getData().equals(value)) && current != end){
       current = current.next();
     }
-    return current==end;
+    return current!=end || end.getData().equals(value);
 
   }
 

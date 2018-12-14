@@ -10,5 +10,10 @@ public class Driver{
     System.out.println(MLL.get(3));
     System.out.println(MLL.get(4));
     System.out.println(MLL.set(1,6));
+    System.out.println(MLL.contains(4));
+    System.out.println(MLL.contains(432));
+    System.out.println(MLL.contains(-3));
+    System.out.println(MLL.contains(1));
+    System.out.println(MLL.contains(7));
   }
 }
