@@ -20,13 +20,13 @@ public class MyLinkedList{
     return true;
   }
   public String toString(){
-    String out = "[";
+    String out = size()+" "+start.getData()+"[";
     Node current = start;
     while(current != null){
       out+=current.getData()+",";
       current = current.next();
     }
-    return out.substring(0,out.length()-1)+"]";
+    return out.substring(0,out.length()-1)+"]"+end.getData();
   }
   private Node getNode(int index){
     Node current = start;
@@ -73,10 +73,10 @@ public class MyLinkedList{
   }
   public boolean remove(Integer value){
     Node current = start;
-    while(current != end && !(current.equals(value))){
+    while(current != null && !(current.equals(value))){
       current = current.next();
     }
-    if(!(current.equals(value))){
+    if(current==null){
       return false;
     }else if(current==start){
       start = current.next();
@@ -98,7 +98,7 @@ public class MyLinkedList{
       end = end.addAfter(value);
       size++;
     }else{
-      getNode(index).addAfter(value);
+      getNode(index-1).addAfter(value);
       size++;
     }
   }
