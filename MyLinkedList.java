@@ -93,8 +93,10 @@ public class MyLinkedList{
   public void add(int index,Integer value){
     if(index==0){
       start = new Node(value,start,null);
-    }else if(index==size()-1){
+      size++;
+    }else if(index==size()){
       end = end.addAfter(value);
+      size++;
     }else{
       getNode(index).addAfter(value);
       size++;
