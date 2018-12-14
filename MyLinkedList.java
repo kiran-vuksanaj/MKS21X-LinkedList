@@ -70,13 +70,22 @@ public class MyLinkedList{
     }
     return getNode(index).remove().getData();
   }
+  public void add(int index,Integer value){
+    if(index==0){
+      start = new Node(value,start,null);
+    }else if(index==size()-1){
+      end = end.addAfter(value);
+    }else{
+      getNode(index).addAfter(value);
+    }
+  }
 
 
 
   private class Node{
     private Integer data;
     private Node next,prev;
-    public Node(int data,Node next,Node prev){
+    public Node(Integer data,Node next,Node prev){
       this.data = data;
       this.next = next;
       this.prev = prev;
@@ -101,10 +110,10 @@ public class MyLinkedList{
     private void setNext(Node n){
       next = n;
     }
-    public boolean addAfter(int val){
+    public Node addAfter(Integer val){
       next = new Node(val,next,this);
       if(next.next()!=null) next.next().setPrev(next);
-      return true;
+      return next;
     }
     public Node remove(){
       if(next != null) next.setPrev(prev);
