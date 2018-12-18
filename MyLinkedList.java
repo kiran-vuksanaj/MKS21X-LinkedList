@@ -20,13 +20,14 @@ public class MyLinkedList{
     return true;
   }
   public String toString(){
+    if(size()==0) return "[]";
     String out = "[";
     Node current = start;
     while(current != null){
-      out+=current.getData()+",";
+      out+=current.getData()+", ";
       current = current.next();
     }
-    return out.substring(0,out.length()-1)+"]";
+    return out.substring(0,out.length()-2)+"]";
   }
   private Node getNode(int index){
     Node current = start;
@@ -62,6 +63,7 @@ public class MyLinkedList{
     else return i;
   }
   public Integer remove(int index){
+    if(index >= size() || index < 0) throw new ArrayIndexOutOfBoundsException(index);
     size--;
     if(index==0){
       start = start.next();
@@ -96,6 +98,7 @@ public class MyLinkedList{
     if(index < 0 || index >= size()) throw new ArrayIndexOutOfBoundsException(index);
     if(index==0){
       start = new Node(value,start,null);
+      start.next().setPrev(start);
       size++;
     }else if(index==size()){
       end = end.addAfter(value);
@@ -104,6 +107,17 @@ public class MyLinkedList{
       getNode(index-1).addAfter(value);
       size++;
     }
+  }
+  public void extend(MyLinkedList other){
+    end.setNext(other.start);
+    end = other.end;
+    size += other.size;
+    other.reset();
+  }
+  private void reset(){
+    size=0;
+    start = null;
+    end = null;
   }
 
 
